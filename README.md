@@ -22,6 +22,39 @@ Bootstrap 4.0
  Nginx 
 ```
 
+# Team Motivation 
+The project is inspired by the need to create a user-friendly web-server configuration application. 
+
+# How it Works 
+The user is directed to login using the front end development environment. 
+
+# Challenges Encountered
+The challenges encountered span across the following:
+```
+ Inability to get enough feedback from users at the development stage 
+
+ Lack of clarity on 
+```
+# Future Expansion 
+This project can be further develop to capture more features in the nearest future in the area of 
+
+# Guidelines for Contributors 
+The following guidelines should be strictly adhered to by contributors for the expansion of this project going forward. 
+
+# Contributors and References 
+The team handling this project include;
+```
+ Bryan Somtochukwu <Bryansomto@github.com>
+
+ Akeem Akinyoola < Akeemandela@github.com>
+
+```
+The following references assisted the actualization of this project. 
+
+```
+ [This YouTube videos](https://youtu.be/dam0GPOAvVI) 
+
+```
 
 
 
