@@ -49,12 +49,8 @@ The team handling this project include;
  Akeem Akinyoola < Akeemandela@github.com>
 
 ```
-The following references assisted the actualization of this project. 
+The following references assisted the actualization of this project.[YouTube video](https://youtu.be/dam0GPOAvVI) 
 
-```
- [This YouTube videos](https://youtu.be/dam0GPOAvVI) 
-
-```
 
 
 
