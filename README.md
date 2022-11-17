@@ -9,34 +9,28 @@ The web application is developed to make it easy for software engineering studen
 # Technologies Used 
 The following technologies was used in designing and implementing this project. 
 ```
-Bootstrap 4.0
+Python-flask
+SQLAlchemy 
 
- Flask 2.0
-
- Jinja 2.0
-
- HTML
-
- Flask-Sqlalchemy 
-
- Nginx 
 ```
 
 # Team Motivation 
 The project is inspired by the need to create a user-friendly web-server configuration application. 
 
 # How it Works 
-The user is directed to login using the front end development environment. 
+On entry, you're directed to a Home page where the option to configure an nginx webserver (user account required) is available. To configure your nginx server, ensure you fill all required input fields.
 
 # Challenges Encountered
 The challenges encountered span across the following:
 ```
  Inability to get enough feedback from users at the development stage 
 
+ Difficulties experienced with adapting reference codes to newer packages
+
  Lack of clarity on 
 ```
 # Future Expansion 
-This project can be further develop to capture more features in the nearest future in the area of 
+This project can be further develop to capture more features in the nearest future in the field of DevOps and SRE.  
 
 # Guidelines for Contributors 
 The following guidelines should be strictly adhered to by contributors for the expansion of this project going forward. 
@@ -46,7 +40,7 @@ The team handling this project include;
 ```
  Bryan Somtochukwu <Bryansomto@github.com>
 
- Akeem Akinyoola < Akeemandela@github.com>
+ Akeem Akinyoola <Akeemandela@github.com>
 
 ```
 The following references assisted the actualization of this project.[YouTube video](https://youtu.be/dam0GPOAvVI) 
