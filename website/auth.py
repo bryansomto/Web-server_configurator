@@ -8,7 +8,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/login', methods=['GET', 'POST', 'PUT'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -27,7 +27,7 @@ def login():
             flash('Email does not exist.', category='error')
 
 
-    return render_template("login.html")
+    return render_template("login.html", user=current_user)
 
 
 @auth.route('/logout')
@@ -66,4 +66,4 @@ def sign_up():
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
 
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", user=current_user)
