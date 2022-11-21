@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h1>This is the home page</h1>
+<h3 class="m-3 d-flex justify-content-center">Click the button below to configure an Nginx web server</h3>
+<form method="POST" class="p-2 d-flex justify-content-center">
+    <button type="submit" class="btn btn-outline-dark img-fluid" value="configure_nginx" role="button">
+        <img src="../static/img/nginx-logo-svgrepo-com.svg" alt="Nginx configuration button" />
+    </button>
+</form>
+<article class="mt-5 d-flex flex-column">
+    <h3 class="d-flex justify-content-center">About</h3>
+    <p class="d-flex justify-content-center">Lorem ipsum</p>
+</article>
 {% endblock %}
