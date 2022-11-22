@@ -5,15 +5,20 @@
     <h3 align="center">Configure Nginx web server</h3>
     <div class="form-group">
         <label for="server_name">Server name</label>
-        <input type="text" class="form-control" id="server_name" name="server_name" placeholder="Enter server name e.g. Ubuntu" /> 
+        <input type="text" class="form-control" id="server_name" name="server_name"
+            placeholder="Enter server name e.g. Ubuntu" />
     </div>
     <div class="form-group">
         <label for="ip_addr">Server IP address</label>
-        <input type="text" class="form-control" id="ip_addr" name="ip_addr" placeholder="Enter Server IP address e.g. 192.168.010.2" /> 
+        <input type="text" class="form-control" id="ip_addr" name="ip_addr"
+            placeholder="Enter Server IP address e.g. 192.168.010.2" />
     </div>
     <div class="form-group">
-        <label for="password1">Password</label>
-        <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password" /> 
+        <label for="id_file">Identity file</label>
+        <input type="file" class="form-control" id="id_file" name="id_file" />
+
+        <!-- <input type="file" class="form-control" id="id_file" name="id_file"
+            onchange="onChooseFile(event, onFileLoad.bind(this, 'contents'))" /> -->
     </div>
     <br />
     <button type="submit" class="btn btn-success">Submit</button>
