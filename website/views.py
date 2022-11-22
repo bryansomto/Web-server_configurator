@@ -19,4 +19,5 @@ def nginx_config():
         id_file = request.form['id_file']
         
         f = open(id_file, "r", encoding="UTF-8")
+        print (f.read())
     return render_template("nginx-config.html", user=current_user)
