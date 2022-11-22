@@ -18,6 +18,12 @@ def nginx_config():
         ip_addr = request.form.get('ip_addr')
         id_file = request.form['id_file']
         
-        f = open(id_file, "r", encoding="UTF-8")
-        print (f.read())
+        with open(id_file, 'r') as f:
+
+            for line in f:
+                print (line, end='')
+
+            f_contents = f.read()
+            print(f_contents)
+
     return render_template("nginx-config.html", user=current_user)
