@@ -13,7 +13,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'jhgjetdjq wjgkfc'
     app.config['SQLALCHEMY_DATABASE_URI'] = \
-      'sqlite:///' + path.join(basedir, DB_NAME)
+        'sqlite:///' + path.join(basedir, DB_NAME)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
 
@@ -27,7 +27,6 @@ def create_app():
 
     with app.app_context():
         db.create_all()
-
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
