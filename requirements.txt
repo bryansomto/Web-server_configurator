@@ -1,5 +1,6 @@
 Flask==2.2.2
 Flask_Login==0.6.2
 flask_sqlalchemy==3.0.2
+paramiko==2.12.0
 SQLAlchemy==1.4.44
 Werkzeug==2.2.2
