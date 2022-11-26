@@ -17,12 +17,13 @@ def paramikoHandler(server_name, ip_addr, private_key, passphrase=None):
         else:
             ssh.connect(ip_addr, username=server_name,
                         key_filename=path.join(path.expanduser('~'), ".ssh", private_key))
-    except (ssh_exception.BadAuthenticationType, ssh_exception.PasswordRequiredException, ValueError) as error:
+    except (ssh_exception.NoValidConnectionsError, ssh_exception.BadAuthenticationType, ssh_exception.PasswordRequiredException, ValueError) as error:
         print(error)
         flash(str(error), category='error')
         return redirect(url_for('views.nginx_config'))
 
-    stdin, stdout, stderr = ssh.exec_command("uname -a")
+    stdin, stdout, stderr = ssh.exec_command(
+        "ls; cd .")
     output = stdout.readlines()
     error = stderr.readlines()
 

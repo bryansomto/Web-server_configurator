@@ -22,7 +22,7 @@ def nginx_config():
     if request.method == 'POST':
         server_name = request.form.get('server_name')
         ip_addr = request.form.get('ip_addr')
-        private_key = request.form.get('private_key')
+        private_key = request.files['private_key'].filename
         passphrase = request.form.get('passphrase')
 
         paramikoHandler(server_name, ip_addr, private_key, passphrase)
