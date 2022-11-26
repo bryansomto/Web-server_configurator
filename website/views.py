@@ -22,7 +22,6 @@ def nginx_config():
     if request.method == 'POST':
         server_name = request.form.get('server_name')
         ip_addr = request.form.get('ip_addr')
-        file = request.files['private_key']
         private_key = request.files['private_key'].filename
         passphrase = request.form.get('passphrase')
 

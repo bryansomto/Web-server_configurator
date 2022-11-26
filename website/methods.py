@@ -16,9 +16,31 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+def fileUploadHandler():
+    if 'private_key' not in request.files:
+        flash('No file part', category='error')
+        return redirect(request.url)
+
+    file = request.files['private_key']
+    if file.filename == '':
+        flash('No selected file', category='error')
+        return redirect(request.url)
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)  # type: ignore
+
+        if not path.exists(app.config['STORAGE_FOLDER']):
+            makedirs(app.config['STORAGE_FOLDER'])
+
+        file.save(path.join(app.config['STORAGE_FOLDER'], filename))
+
+    else:
+        flash('file format not supported', category='error')
+        return redirect(url_for('views.nginx_config'))
+
+
 # SSH login handler
-
-
 def paramikoHandler(server_name, ip_addr, private_key, passphrase=None):
     ssh = SSHClient()
     ssh.set_missing_host_key_policy(AutoAddPolicy())
@@ -32,7 +54,7 @@ def paramikoHandler(server_name, ip_addr, private_key, passphrase=None):
                         key_filename=path.join(path.expanduser('~'), ".ssh", private_key))
     except (ssh_exception.NoValidConnectionsError, ssh_exception.BadAuthenticationType, ssh_exception.PasswordRequiredException, ValueError) as error:
         print(error)
-        flash(str(error), category='error')
+        flash(str(error), category='error')  # type: ignore
         return redirect(url_for('views.nginx_config'))
 
     stdin, stdout, stderr = ssh.exec_command(
@@ -49,26 +71,3 @@ def paramikoHandler(server_name, ip_addr, private_key, passphrase=None):
 
     # Cleanup
     ssh.close()
-
-
-def fileUploadHandler():
-    if 'private_key' not in request.files:
-        flash('No file part', category='error')
-        return redirect(request.url)
-
-    file = request.files['private_key']
-    if file.filename == '':
-        flash('No selected file')
-        return redirect(request.url)
-
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)  # type: ignore
-
-        if not path.exists(app.config['STORAGE_FOLDER']):
-            makedirs(app.config['STORAGE_FOLDER'])
-
-        file.save(path.join(app.config['STORAGE_FOLDER'], filename))
-
-    else:
-        flash('file format not supported', category='error')
-        return redirect(url_for('views.nginx_config'))
