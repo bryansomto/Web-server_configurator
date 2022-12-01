@@ -58,13 +58,13 @@ def paramikoHandler(server_name, ip_addr, private_key, passphrase=None):
         return redirect(url_for('views.nginx_config'))
 
     stdin, stdout, stderr = ssh.exec_command(
-        "ls; cd .")
+        "sudo apt-get -y install nginx; sudo systemctl restart nginx")
     output = stdout.readlines()
     error = stderr.readlines()
 
     if output:
         print([line.strip() for line in output])
-        flash('Success', category='success')
+        flash(output[3], category='success')
     if error:
         print([line.strip() for line in output])
         flash('Failed', category='error')
