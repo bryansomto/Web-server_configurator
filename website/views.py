@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 import os
 from pathlib import Path
-from .methods import paramikoHandler, fileUploadHandler
+from .methods import paramikoHandler, File
 
 
 views = Blueprint('views', __name__)
@@ -22,10 +22,10 @@ def nginx_config():
     if request.method == 'POST':
         server_name = request.form.get('server_name')
         ip_addr = request.form.get('ip_addr')
-        private_key = request.files['private_key'].filename
+        private_key = request.files['private_key']
         passphrase = request.form.get('passphrase')
 
-        fileUploadHandler()
+        File.fileUploadHandler(private_key)  # type: ignore
         paramikoHandler(server_name, ip_addr, private_key, passphrase)
 
     return render_template("nginx-config.html", user=current_user)

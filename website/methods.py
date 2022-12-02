@@ -17,27 +17,52 @@ def allowed_file(filename):
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def fileUploadHandler():
-    if 'private_key' not in request.files:
-        flash('No file part', category='error')
-        return redirect(request.url)
+class File():
+    def __init__(self, file):
+        self.file = file
 
-    file = request.files['private_key']
-    if file.filename == '':
-        flash('No selected file', category='error')
-        return redirect(request.url)
-
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)  # type: ignore
+    def read_file(self):
+        filename = secure_filename(self.file.filename)  # type: ignore
 
         if not path.exists(app.config['STORAGE_FOLDER']):
             makedirs(app.config['STORAGE_FOLDER'])
 
-        file.save(path.join(app.config['STORAGE_FOLDER'], filename))
+        self.file.save(path.join(app.config['STORAGE_FOLDER'], filename))
 
-    else:
-        flash('file format not supported', category='error')
-        return redirect(url_for('views.nginx_config'))
+        with open(f"{app.config['STORAGE_FOLDER']/filename}") as f:
+            file_content = f.read().splitlines
+
+        return file_content
+
+    def fileUploadHandler(self):
+        if 'private_key' not in request.files:
+            flash('No file part', category='error')
+            return redirect(request.url)
+
+        self.file = request.files['private_key']
+        if self.file.filename == '':
+            flash('No selected file', category='error')
+            return redirect(request.url)
+
+        if self.file and allowed_file(self.file.filename):
+            # self.read_file(self.file)  # type: ignore
+            filename = secure_filename(self.file.filename)  # type: ignore
+
+            if not path.exists(app.config['STORAGE_FOLDER']):
+                makedirs(app.config['STORAGE_FOLDER'])
+
+            self.file.save(path.join(app.config['STORAGE_FOLDER'], filename))
+
+            file_path = STORAGE_FOLDER + filename
+            print(file_path)
+            with open(file_path, 'r') as f:
+                file_content = f.read().splitlines
+
+            return file_content
+
+        else:
+            flash('file format not supported', category='error')
+            return redirect(url_for('views.nginx_config'))
 
 
 # SSH login handler
