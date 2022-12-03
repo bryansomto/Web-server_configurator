@@ -25,7 +25,7 @@ def nginx_config():
         private_key = request.files['private_key']
         passphrase = request.form.get('passphrase')
 
-        File.fileUploadHandler(private_key)  # type: ignore
-        paramikoHandler(server_name, ip_addr, private_key, passphrase)
+        key = File.fileUploadHandler(private_key)  # type: ignore
+        paramikoHandler(server_name, ip_addr, key, passphrase)
 
     return render_template("nginx-config.html", user=current_user)
